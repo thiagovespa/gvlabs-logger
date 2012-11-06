@@ -3,6 +3,7 @@ package org.gvlabs.logger.engine;
 import static org.gvlabs.logger.engine.LoggerFactory.createLogger;
 
 import java.lang.reflect.Field;
+import java.security.AccessControlContext;
 
 import org.gvlabs.logger.ConsoleLogger;
 import org.gvlabs.logger.FileLogger;
@@ -35,7 +36,7 @@ public class LoggerInjector {
 			// TODO: Pegar de arquivo tem preferencia
 		}
 		Field[] fields = classToLog.getDeclaredFields();
-		for (Field field : fields) {
+		for (final Field field : fields) {
 			Logger loggerImpl = null;
 			if (field.isAnnotationPresent(ConsoleLogger.class)) {
 				loggerImpl = createLogger(
@@ -52,17 +53,26 @@ public class LoggerInjector {
 						classToLog, prefix);
 			}
 			if (loggerImpl != null) {
-				try {
-					// Injection
-					boolean isAccessible = field.isAccessible();
-					field.setAccessible(true);
-					field.set(null, loggerImpl);
-					field.setAccessible(isAccessible);
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				}
+
+				// Injection
+				final Logger loggerToSet = loggerImpl;
+				java.security.AccessController
+						.doPrivileged(new java.security.PrivilegedAction<Object>() {
+							public Object run() {
+								try {
+									boolean isAccessible = field.isAccessible();
+									field.setAccessible(true);
+									field.set(null, loggerToSet);
+									field.setAccessible(isAccessible);
+								} catch (IllegalArgumentException e) {
+									e.printStackTrace();
+								} catch (IllegalAccessException e) {
+									e.printStackTrace();
+								}
+								return null;
+							}
+						});
+
 			}
 		}
 
