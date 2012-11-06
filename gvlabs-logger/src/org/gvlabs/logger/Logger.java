@@ -3,9 +3,9 @@ package org.gvlabs.logger;
 import org.gvlabs.logger.engine.LoggerLevel;
 
 public abstract class Logger {
-	protected LoggerLevel maxLogLevel;
+	private LoggerLevel maxLogLevel;
 
-	protected String prefix;
+	private String prefix;
 
 	// TODO: Colocar resource bundle?
 	

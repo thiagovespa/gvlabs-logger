@@ -24,8 +24,8 @@ public abstract class AbstractWriterLogger extends Logger {
 			StackTraceElement ste = getLastStackTrace();
 
 			StringBuilder cmplSB = new StringBuilder();
-			if (prefix != null) {
-				cmplSB.append(prefix).append(" ");
+			if (getPrefix() != null) {
+				cmplSB.append(getPrefix()).append(" ");
 			}
 			cmplSB.append(DateFormat.getDateTimeInstance().format(new Date()))
 					.append(" [").append(level.toString()).append("] ")
