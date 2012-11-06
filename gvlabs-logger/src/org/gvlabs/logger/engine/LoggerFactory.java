@@ -13,7 +13,12 @@ import org.gvlabs.logger.impl.MailLoggerImpl;
 
 public final class LoggerFactory {
 
-	public static Logger createLogger(Annotation ann, LoggerLevel maxLogLevel, Class<?> classToLog, String prefix) {
+	private LoggerFactory() {
+
+	}
+
+	public static Logger createLogger(Annotation ann, LoggerLevel maxLogLevel,
+			Class<?> classToLog, String prefix) {
 		if (ann.annotationType().equals(ConsoleLogger.class)) {
 			ConsoleLogger annInst = (ConsoleLogger) ann;
 			if (annInst.enabled()) {
@@ -23,7 +28,8 @@ public final class LoggerFactory {
 			FileLogger annInst = (FileLogger) ann;
 			if (annInst.enabled()) {
 				try {
-					return new FileLoggerImpl(annInst.filePath(), maxLogLevel, prefix);
+					return new FileLoggerImpl(annInst.filePath(), maxLogLevel,
+							prefix);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

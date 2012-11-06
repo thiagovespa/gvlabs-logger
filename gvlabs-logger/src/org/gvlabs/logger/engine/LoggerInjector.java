@@ -11,16 +11,20 @@ import org.gvlabs.logger.LoggerSettings;
 import org.gvlabs.logger.MailLogger;
 
 public class LoggerInjector {
-	
+
+	private LoggerInjector() {
+
+	}
+
 	public static void initLog() {
 		initLog(null);
 	}
 
 	public static void initLog(String prefix) {
 		Class<?> classToLog = getClassToInject();
-		initLog(classToLog , prefix);
+		initLog(classToLog, prefix);
 	}
-	
+
 	public static void initLog(Class<?> classToLog, String prefix) {
 
 		LoggerLevel maxLogLevel = LoggerLevel.INFO; // Default
@@ -35,14 +39,17 @@ public class LoggerInjector {
 			Logger loggerImpl = null;
 			if (field.isAnnotationPresent(ConsoleLogger.class)) {
 				loggerImpl = createLogger(
-						field.getAnnotation(ConsoleLogger.class), maxLogLevel, classToLog, prefix);
+						field.getAnnotation(ConsoleLogger.class), maxLogLevel,
+						classToLog, prefix);
 			} else if (field.isAnnotationPresent(FileLogger.class)) {
 				loggerImpl = createLogger(
-						field.getAnnotation(FileLogger.class), maxLogLevel, classToLog, prefix);
+						field.getAnnotation(FileLogger.class), maxLogLevel,
+						classToLog, prefix);
 
 			} else if (field.isAnnotationPresent(MailLogger.class)) {
 				loggerImpl = createLogger(
-						field.getAnnotation(MailLogger.class), maxLogLevel, classToLog, prefix);
+						field.getAnnotation(MailLogger.class), maxLogLevel,
+						classToLog, prefix);
 			}
 			if (loggerImpl != null) {
 				try {
@@ -61,18 +68,18 @@ public class LoggerInjector {
 
 	}
 
-	
 	public static Class<?> getClassToInject() {
 		final StackTraceElement[] stes = Thread.currentThread().getStackTrace();
 		boolean foundLogClass = false;
 		String className = null;
-		for(StackTraceElement ste : stes) {
+		for (StackTraceElement ste : stes) {
 			className = ste.getClassName();
-			if(className.startsWith(LoggerInjector.class.getCanonicalName())) {
+			if (className.startsWith(LoggerInjector.class.getCanonicalName())) {
 				foundLogClass = true;
 			} else {
-				if(foundLogClass) {
-					if (!className.startsWith("java.lang.reflect.") && !className.startsWith("sun.reflect.")) {
+				if (foundLogClass) {
+					if (!className.startsWith("java.lang.reflect.")
+							&& !className.startsWith("sun.reflect.")) {
 						try {
 							return Class.forName(className);
 						} catch (ClassNotFoundException e) {
@@ -83,7 +90,7 @@ public class LoggerInjector {
 			}
 
 		}
-		
+
 		return null;
 	}
 }

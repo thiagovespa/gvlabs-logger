@@ -5,9 +5,15 @@ import static org.gvlabs.logger.engine.LoggerInjector.initLog;
 import org.gvlabs.logger.engine.LoggerLevel;
 
 public class StaticConsoleLogger {
-	
-	static { initLog("[StaticLoger]"); }
-	
+
+	private StaticConsoleLogger() {
+
+	}
+
+	static {
+		initLog("[StaticLoger]");
+	}
+
 	@ConsoleLogger
 	private static Logger consoleLogManager;
 
