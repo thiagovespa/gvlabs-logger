@@ -4,7 +4,7 @@ import static org.gvlabs.logger.engine.LoggerInjector.initLog;
 
 import org.gvlabs.logger.engine.LoggerLevel;
 
-public class StaticConsoleLogger {
+public final class StaticConsoleLogger {
 
 	private StaticConsoleLogger() {
 

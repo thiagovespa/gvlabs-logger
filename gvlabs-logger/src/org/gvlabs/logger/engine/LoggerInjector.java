@@ -11,7 +11,7 @@ import org.gvlabs.logger.Logger;
 import org.gvlabs.logger.LoggerSettings;
 import org.gvlabs.logger.MailLogger;
 
-public class LoggerInjector {
+public final class LoggerInjector {
 
 	private LoggerInjector() {
 
