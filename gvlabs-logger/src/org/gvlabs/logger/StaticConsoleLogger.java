@@ -2,6 +2,7 @@ package org.gvlabs.logger;
 
 import static org.gvlabs.logger.LoggerInjector.initLog;
 
+import org.gvlabs.logger.LoggerLevel;
 
 public final class StaticConsoleLogger {
 
