@@ -6,11 +6,9 @@ import org.gvlabs.logger.LoggerLevel;
 
 public class MailLoggerImpl extends Logger {
 	
-	private String prefix;
 	
 	public MailLoggerImpl(LoggerLevel maxLogLevel, String prefix) {
 		super(maxLogLevel, prefix);
-		this.prefix = prefix;
 	}
 
 
