@@ -7,8 +7,8 @@ import java.util.logging.Level;
 import org.gvlabs.logger.ConsoleLogger;
 import org.gvlabs.logger.FileLogger;
 import org.gvlabs.logger.Logger;
+import org.gvlabs.logger.LoggerLevel;
 import org.gvlabs.logger.MailLogger;
-import org.gvlabs.logger.engine.LoggerLevel;
 
 public final class LoggerFactory {
 

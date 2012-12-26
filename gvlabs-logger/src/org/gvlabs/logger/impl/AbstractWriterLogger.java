@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.logging.Level;
 
 import org.gvlabs.logger.Logger;
-import org.gvlabs.logger.engine.LoggerLevel;
+import org.gvlabs.logger.LoggerLevel;
 
 public abstract class AbstractWriterLogger extends Logger {
 	

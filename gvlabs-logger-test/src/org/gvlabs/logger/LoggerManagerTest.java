@@ -4,11 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
-import static org.gvlabs.logger.engine.LoggerInjector.initLog;
-import org.gvlabs.logger.engine.LoggerLevel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.gvlabs.logger.LoggerInjector.initLog;
 import static org.gvlabs.logger.StaticConsoleLogger.*;
 
 @LoggerSettings(level = LoggerLevel.TRACE)

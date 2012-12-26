@@ -1,8 +1,7 @@
 package org.gvlabs.logger;
 
-import static org.gvlabs.logger.engine.LoggerInjector.initLog;
+import static org.gvlabs.logger.LoggerInjector.initLog;
 
-import org.gvlabs.logger.engine.LoggerLevel;
 
 public final class StaticConsoleLogger {
 

@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.gvlabs.logger.engine.LoggerLevel;
+import org.gvlabs.logger.LoggerLevel;
 
 public class FileLoggerImpl extends AbstractWriterLogger {
 

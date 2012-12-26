@@ -2,7 +2,7 @@ package org.gvlabs.logger.impl;
 
 
 import org.gvlabs.logger.Logger;
-import org.gvlabs.logger.engine.LoggerLevel;
+import org.gvlabs.logger.LoggerLevel;
 
 public class MailLoggerImpl extends Logger {
 	

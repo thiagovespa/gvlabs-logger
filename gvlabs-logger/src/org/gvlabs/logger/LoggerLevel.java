@@ -1,4 +1,4 @@
-package org.gvlabs.logger.engine;
+package org.gvlabs.logger;
 
 public enum LoggerLevel {
 	TRACE, DEBUG, INFO, WARN, ERROR, NONE;

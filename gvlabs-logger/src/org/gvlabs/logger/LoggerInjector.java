@@ -1,16 +1,10 @@
-package org.gvlabs.logger.engine;
+package org.gvlabs.logger;
 
 import static org.gvlabs.logger.impl.LoggerFactory.createLogger;
 
 import java.lang.reflect.Field;
-import java.security.AccessControlContext;
 import java.util.logging.Level;
 
-import org.gvlabs.logger.ConsoleLogger;
-import org.gvlabs.logger.FileLogger;
-import org.gvlabs.logger.Logger;
-import org.gvlabs.logger.LoggerSettings;
-import org.gvlabs.logger.MailLogger;
 
 public final class LoggerInjector {
 	

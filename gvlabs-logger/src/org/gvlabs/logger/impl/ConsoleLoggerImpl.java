@@ -2,7 +2,7 @@ package org.gvlabs.logger.impl;
 
 import java.io.OutputStreamWriter;
 
-import org.gvlabs.logger.engine.LoggerLevel;
+import org.gvlabs.logger.LoggerLevel;
 
 public class ConsoleLoggerImpl extends AbstractWriterLogger {
 
