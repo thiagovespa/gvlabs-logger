@@ -36,8 +36,7 @@ public abstract class AbstractWriterLogger extends Logger {
 					.append(ste.getClassName()).append(".")
 					.append(ste.getMethodName()).append("() (")
 					.append(ste.getFileName()).append(":")
-					.append(ste.getLineNumber()).append(") ").append(msg)
-					.toString();
+					.append(ste.getLineNumber()).append(") ").append(msg);
 
 			writer.write(cmplSB.toString());
 			writer.write("\n");
