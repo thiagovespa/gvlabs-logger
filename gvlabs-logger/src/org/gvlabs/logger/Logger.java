@@ -1,13 +1,12 @@
 package org.gvlabs.logger;
 
-
 public abstract class Logger {
 	private LoggerLevel maxLogLevel;
 
 	private String prefix;
 
 	// TODO: Colocar resource bundle?
-	
+
 	public Logger(LoggerLevel maxLogLevel, String prefix) {
 		super();
 		this.maxLogLevel = maxLogLevel;
@@ -51,25 +50,25 @@ public abstract class Logger {
 	public void warn(String msg) {
 		this.log(LoggerLevel.WARN, msg);
 	}
-	
+
 	public StackTraceElement getLastStackTrace() {
 		final StackTraceElement[] stes = Thread.currentThread().getStackTrace();
 		boolean foundLogClass = false;
-		int i=stes.length-1;
-		for(;i>=0;--i) {
+		int i = stes.length - 1;
+		for (; i >= 0; --i) {
 			StackTraceElement ste = stes[i];
 			String className = ste.getClassName();
-			if(className.startsWith(Logger.class.getCanonicalName())) {
+			if (className.startsWith(Logger.class.getCanonicalName())) {
 				foundLogClass = true;
 			} else {
-				if(foundLogClass) {
-					if (!className.startsWith("java.lang.reflect.") && !className.startsWith("sun.reflect.")) {
-						break;
-					}
+				if (foundLogClass
+						&& !className.startsWith("java.lang.reflect.")
+						&& !className.startsWith("sun.reflect.")) {
+					break;
 				}
-			} 
+			}
 		}
-		return stes[i+1];
+		return stes[i + 1];
 	}
 
 }

@@ -5,10 +5,10 @@ import static org.gvlabs.logger.impl.LoggerFactory.createLogger;
 import java.lang.reflect.Field;
 import java.util.logging.Level;
 
-
 public final class LoggerInjector {
-	
-	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger.getAnonymousLogger();
+
+	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger
+			.getAnonymousLogger();
 
 	private LoggerInjector() {
 
@@ -62,9 +62,11 @@ public final class LoggerInjector {
 									field.set(null, loggerToSet);
 									field.setAccessible(isAccessible);
 								} catch (IllegalArgumentException e) {
-									JLOGGER.log(Level.SEVERE, "Unexpected error", e);
+									JLOGGER.log(Level.SEVERE,
+											"Unexpected error", e);
 								} catch (IllegalAccessException e) {
-									JLOGGER.log(Level.SEVERE, "Unexpected error", e);
+									JLOGGER.log(Level.SEVERE,
+											"Unexpected error", e);
 								}
 								return null;
 							}
@@ -84,16 +86,16 @@ public final class LoggerInjector {
 			if (className.startsWith(LoggerInjector.class.getCanonicalName())) {
 				foundLogClass = true;
 			} else {
-				if (foundLogClass) {
-					if (!className.startsWith("java.lang.reflect.")
-							&& !className.startsWith("sun.reflect.")) {
-						try {
-							return Class.forName(className);
-						} catch (ClassNotFoundException e) {
-							JLOGGER.log(Level.SEVERE, "Unexpected error", e);
-						}
+				if (foundLogClass
+						&& !className.startsWith("java.lang.reflect.")
+						&& !className.startsWith("sun.reflect.")) {
+					try {
+						return Class.forName(className);
+					} catch (ClassNotFoundException e) {
+						JLOGGER.log(Level.SEVERE, "Unexpected error", e);
 					}
 				}
+
 			}
 
 		}
