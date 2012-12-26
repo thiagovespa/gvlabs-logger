@@ -5,11 +5,15 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.logging.Level;
 
 import org.gvlabs.logger.Logger;
 import org.gvlabs.logger.engine.LoggerLevel;
 
 public abstract class AbstractWriterLogger extends Logger {
+	
+	private final static java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
+	
 	private Writer writer;
 
 	public AbstractWriterLogger(Writer writer, LoggerLevel maxLogLevel,
@@ -42,11 +46,11 @@ public abstract class AbstractWriterLogger extends Logger {
 			}
 			writer.flush();
 		} catch (IOException ioe) {
-			ioe.printStackTrace();
+			jLogger.log(Level.SEVERE, "Unexpected error", e);
 			try {
 				close();
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				jLogger.log(Level.SEVERE, "Unexpected error", e);
 			}
 
 		}

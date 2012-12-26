@@ -4,6 +4,7 @@ import static org.gvlabs.logger.impl.LoggerFactory.createLogger;
 
 import java.lang.reflect.Field;
 import java.security.AccessControlContext;
+import java.util.logging.Level;
 
 import org.gvlabs.logger.ConsoleLogger;
 import org.gvlabs.logger.FileLogger;
@@ -12,6 +13,8 @@ import org.gvlabs.logger.LoggerSettings;
 import org.gvlabs.logger.MailLogger;
 
 public final class LoggerInjector {
+	
+	private final static java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
 
 	private LoggerInjector() {
 
@@ -65,9 +68,9 @@ public final class LoggerInjector {
 									field.set(null, loggerToSet);
 									field.setAccessible(isAccessible);
 								} catch (IllegalArgumentException e) {
-									e.printStackTrace();
+									jLogger.log(Level.SEVERE, "Unexpected error", e);
 								} catch (IllegalAccessException e) {
-									e.printStackTrace();
+									jLogger.log(Level.SEVERE, "Unexpected error", e);
 								}
 								return null;
 							}
@@ -93,7 +96,7 @@ public final class LoggerInjector {
 						try {
 							return Class.forName(className);
 						} catch (ClassNotFoundException e) {
-							e.printStackTrace();
+							jLogger.log(Level.SEVERE, "Unexpected error", e);
 						}
 					}
 				}
