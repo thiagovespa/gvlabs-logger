@@ -12,7 +12,7 @@ import org.gvlabs.logger.LoggerLevel;
 
 public abstract class AbstractWriterLogger extends Logger {
 	
-	private static final java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
+	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger.getAnonymousLogger();
 	
 	private Writer writer;
 
@@ -46,11 +46,11 @@ public abstract class AbstractWriterLogger extends Logger {
 			}
 			writer.flush();
 		} catch (IOException ioe) {
-			jLogger.log(Level.SEVERE, "Unexpected error", e);
+			JLOGGER.log(Level.SEVERE, "Unexpected error", e);
 			try {
 				close();
 			} catch (IOException e1) {
-				jLogger.log(Level.SEVERE, "Unexpected error", e);
+				JLOGGER.log(Level.SEVERE, "Unexpected error", e);
 			}
 
 		}

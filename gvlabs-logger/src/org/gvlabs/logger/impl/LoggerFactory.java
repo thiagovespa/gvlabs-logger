@@ -12,7 +12,7 @@ import org.gvlabs.logger.MailLogger;
 
 public final class LoggerFactory {
 
-	private static final java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
+	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger.getAnonymousLogger();
 	
 	private LoggerFactory() {
 
@@ -32,7 +32,7 @@ public final class LoggerFactory {
 					return new FileLoggerImpl(annInst.filePath(), maxLogLevel,
 							prefix);
 				} catch (IOException e) {
-					jLogger.log(Level.SEVERE, "Unexpected error", e);
+					JLOGGER.log(Level.SEVERE, "Unexpected error", e);
 				}
 			}
 		} else if (ann.annotationType().equals(MailLogger.class)) {

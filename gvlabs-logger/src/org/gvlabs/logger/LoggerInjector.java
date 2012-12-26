@@ -8,7 +8,7 @@ import java.util.logging.Level;
 
 public final class LoggerInjector {
 	
-	private static final java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
+	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger.getAnonymousLogger();
 
 	private LoggerInjector() {
 
@@ -62,9 +62,9 @@ public final class LoggerInjector {
 									field.set(null, loggerToSet);
 									field.setAccessible(isAccessible);
 								} catch (IllegalArgumentException e) {
-									jLogger.log(Level.SEVERE, "Unexpected error", e);
+									JLOGGER.log(Level.SEVERE, "Unexpected error", e);
 								} catch (IllegalAccessException e) {
-									jLogger.log(Level.SEVERE, "Unexpected error", e);
+									JLOGGER.log(Level.SEVERE, "Unexpected error", e);
 								}
 								return null;
 							}
@@ -90,7 +90,7 @@ public final class LoggerInjector {
 						try {
 							return Class.forName(className);
 						} catch (ClassNotFoundException e) {
-							jLogger.log(Level.SEVERE, "Unexpected error", e);
+							JLOGGER.log(Level.SEVERE, "Unexpected error", e);
 						}
 					}
 				}
