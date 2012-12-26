@@ -12,7 +12,7 @@ import org.gvlabs.logger.LoggerLevel;
 
 public abstract class AbstractWriterLogger extends Logger {
 	
-	private final static java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
+	private static final java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
 	
 	private Writer writer;
 

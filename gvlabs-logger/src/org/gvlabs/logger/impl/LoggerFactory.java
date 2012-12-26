@@ -12,7 +12,7 @@ import org.gvlabs.logger.MailLogger;
 
 public final class LoggerFactory {
 
-	private final static java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
+	private static final java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
 	
 	private LoggerFactory() {
 

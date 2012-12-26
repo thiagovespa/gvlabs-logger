@@ -8,7 +8,7 @@ import java.util.logging.Level;
 
 public final class LoggerInjector {
 	
-	private final static java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
+	private static final java.util.logging.Logger jLogger = java.util.logging.Logger.getAnonymousLogger();
 
 	private LoggerInjector() {
 
