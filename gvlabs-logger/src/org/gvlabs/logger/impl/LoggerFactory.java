@@ -1,4 +1,4 @@
-package org.gvlabs.logger.engine;
+package org.gvlabs.logger.impl;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -7,9 +7,7 @@ import org.gvlabs.logger.ConsoleLogger;
 import org.gvlabs.logger.FileLogger;
 import org.gvlabs.logger.Logger;
 import org.gvlabs.logger.MailLogger;
-import org.gvlabs.logger.impl.ConsoleLoggerImpl;
-import org.gvlabs.logger.impl.FileLoggerImpl;
-import org.gvlabs.logger.impl.MailLoggerImpl;
+import org.gvlabs.logger.engine.LoggerLevel;
 
 public final class LoggerFactory {
 

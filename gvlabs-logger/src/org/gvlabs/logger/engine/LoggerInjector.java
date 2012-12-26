@@ -1,6 +1,6 @@
 package org.gvlabs.logger.engine;
 
-import static org.gvlabs.logger.engine.LoggerFactory.createLogger;
+import static org.gvlabs.logger.impl.LoggerFactory.createLogger;
 
 import java.lang.reflect.Field;
 import java.security.AccessControlContext;
