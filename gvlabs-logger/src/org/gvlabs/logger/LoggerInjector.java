@@ -83,7 +83,7 @@ public final class LoggerInjector {
 		String className = null;
 		for (StackTraceElement ste : stes) {
 			className = ste.getClassName();
-			if (className.startsWith(LoggerInjector.class.getCanonicalName())) {
+			if (className.equals(LoggerInjector.class.getCanonicalName())) {
 				foundLogClass = true;
 			} else {
 				if (foundLogClass

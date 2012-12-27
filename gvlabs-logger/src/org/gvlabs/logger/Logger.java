@@ -1,5 +1,7 @@
 package org.gvlabs.logger;
 
+import org.gvlabs.logger.impl.AbstractWriterLogger;
+
 public abstract class Logger {
 	private LoggerLevel maxLogLevel;
 
@@ -53,20 +55,15 @@ public abstract class Logger {
 
 	public StackTraceElement getLastStackTrace() {
 		final StackTraceElement[] stes = Thread.currentThread().getStackTrace();
-		boolean foundLogClass = false;
 		int i = stes.length - 1;
 		for (; i >= 0; --i) {
 			StackTraceElement ste = stes[i];
 			String className = ste.getClassName();
-			if (className.startsWith(Logger.class.getCanonicalName())) {
-				foundLogClass = true;
-			} else {
-				if (foundLogClass
-						&& !className.startsWith("java.lang.reflect.")
-						&& !className.startsWith("sun.reflect.")) {
-					break;
-				}
+			if (className.equals(StaticConsoleLogger.class.getCanonicalName())
+					|| className.equals(Logger.class.getCanonicalName())) {
+				break;
 			}
+
 		}
 		return stes[i + 1];
 	}
