@@ -1,6 +1,5 @@
 package org.gvlabs.logger;
 
-import org.gvlabs.logger.impl.AbstractWriterLogger;
 
 public abstract class Logger {
 	private LoggerLevel maxLogLevel;
