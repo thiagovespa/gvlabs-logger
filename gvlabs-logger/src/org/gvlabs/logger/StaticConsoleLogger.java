@@ -11,7 +11,7 @@ public final class StaticConsoleLogger {
 	}
 
 	static {
-		initLog("[StaticLoger]");
+		initLog();
 	}
 
 	@ConsoleLogger
