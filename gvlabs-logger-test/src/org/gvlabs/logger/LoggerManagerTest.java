@@ -64,6 +64,7 @@ public class LoggerManagerTest {
 	@Test
 	public void testStaticLogger() {
 		error(TEST_MSG);
+		error(TEST_MSG, new ArithmeticException());
 		info(TEST_MSG);
 		debug(TEST_MSG);
 		trace(TEST_MSG);
