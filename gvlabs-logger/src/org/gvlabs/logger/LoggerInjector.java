@@ -13,6 +13,7 @@ import org.gvlabs.logger.impl.MailLoggerImpl;
 
 public final class LoggerInjector {
 
+	private static final String UNEXPECTED_ERROR_DESC = "Unexpected error";
 	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger
 			.getAnonymousLogger();
 
@@ -69,10 +70,10 @@ public final class LoggerInjector {
 									field.setAccessible(isAccessible);
 								} catch (IllegalArgumentException e) {
 									JLOGGER.log(Level.SEVERE,
-											"Unexpected error", e);
+											UNEXPECTED_ERROR_DESC, e);
 								} catch (IllegalAccessException e) {
 									JLOGGER.log(Level.SEVERE,
-											"Unexpected error", e);
+											UNEXPECTED_ERROR_DESC, e);
 								}
 								return null;
 							}
@@ -98,7 +99,7 @@ public final class LoggerInjector {
 					try {
 						return Class.forName(className);
 					} catch (ClassNotFoundException e) {
-						JLOGGER.log(Level.SEVERE, "Unexpected error", e);
+						JLOGGER.log(Level.SEVERE, UNEXPECTED_ERROR_DESC, e);
 					}
 				}
 
@@ -127,7 +128,7 @@ public final class LoggerInjector {
 					return new FileLoggerImpl(annInst.filePath(), maxLogLevel,
 							prefix);
 				} catch (IOException e) {
-					JLOGGER.log(Level.SEVERE, "Unexpected error", e);
+					JLOGGER.log(Level.SEVERE, UNEXPECTED_ERROR_DESC, e);
 				}
 			}
 		} else if (ann.annotationType().equals(MailLogger.class)) {
