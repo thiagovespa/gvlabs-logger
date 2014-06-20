@@ -7,8 +7,26 @@ import java.io.OutputStreamWriter;
 
 import org.gvlabs.logger.LoggerLevel;
 
+/**
+ * File Logger Implementation
+ * 
+ * @author Thiago Galbiatti Vespa
+ * 
+ */
 public class FileLoggerImpl extends AbstractWriterLogger {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param filePath
+	 *            file path
+	 * @param maxLogLevel
+	 *            max log level
+	 * @param prefix
+	 *            prefix
+	 * @throws IOException
+	 *             ioexception
+	 */
 	public FileLoggerImpl(String filePath, LoggerLevel maxLogLevel,
 			String prefix) throws IOException {
 		super(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
