@@ -1,6 +1,7 @@
 package org.gvlabs.logger.impl;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.util.logging.Level;
 
@@ -23,7 +24,11 @@ public final class LoggerFactory {
 		if (ann.annotationType().equals(ConsoleLogger.class)) {
 			ConsoleLogger annInst = (ConsoleLogger) ann;
 			if (annInst.enabled()) {
-				return new ConsoleLoggerImpl(maxLogLevel, prefix);
+				try {
+					return new ConsoleLoggerImpl(maxLogLevel, prefix);
+				} catch (UnsupportedEncodingException e) {
+					JLOGGER.log(Level.SEVERE, "Unsupported Encoding", e);
+				}
 			}
 		} else if (ann.annotationType().equals(FileLogger.class)) {
 			FileLogger annInst = (FileLogger) ann;
