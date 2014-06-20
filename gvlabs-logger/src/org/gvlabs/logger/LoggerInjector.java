@@ -1,6 +1,6 @@
 package org.gvlabs.logger;
 
-import static org.gvlabs.logger.impl.LoggerFactory.createLogger;
+import static org.gvlabs.logger.LoggerFactory.createLogger;
 
 import java.lang.reflect.Field;
 import java.util.logging.Level;

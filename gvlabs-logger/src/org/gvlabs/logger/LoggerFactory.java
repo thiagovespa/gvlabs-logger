@@ -1,15 +1,13 @@
-package org.gvlabs.logger.impl;
+package org.gvlabs.logger;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.util.logging.Level;
 
-import org.gvlabs.logger.ConsoleLogger;
-import org.gvlabs.logger.FileLogger;
-import org.gvlabs.logger.Logger;
-import org.gvlabs.logger.LoggerLevel;
-import org.gvlabs.logger.MailLogger;
+import org.gvlabs.logger.impl.ConsoleLoggerImpl;
+import org.gvlabs.logger.impl.FileLoggerImpl;
+import org.gvlabs.logger.impl.MailLoggerImpl;
 
 public final class LoggerFactory {
 
