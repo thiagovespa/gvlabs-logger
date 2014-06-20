@@ -1,6 +1,5 @@
 package org.gvlabs.logger;
 
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
@@ -11,6 +10,12 @@ import org.gvlabs.logger.impl.ConsoleLoggerImpl;
 import org.gvlabs.logger.impl.FileLoggerImpl;
 import org.gvlabs.logger.impl.MailLoggerImpl;
 
+/**
+ * Inject all log classes
+ * 
+ * @author Thiago Galbiatti Vespa
+ * 
+ */
 public final class LoggerInjector {
 
 	private static final String UNEXPECTED_ERROR_DESC = "Unexpected error";
@@ -21,16 +26,25 @@ public final class LoggerInjector {
 
 	}
 
+	/**
+	 * Default injection
+	 */
 	public static void initLog() {
 		initLog(null);
 	}
 
+	/**
+	 * Injection with prefix
+	 * 
+	 * @param prefix
+	 *            prefix to log
+	 */
 	public static void initLog(String prefix) {
 		Class<?> classToLog = getClassToInject();
 		initLog(classToLog, prefix);
 	}
 
-	public static void initLog(Class<?> classToLog, String prefix) {
+	private static void initLog(Class<?> classToLog, String prefix) {
 
 		LoggerLevel maxLogLevel = LoggerLevel.INFO; // Default
 		if (classToLog.isAnnotationPresent(LoggerSettings.class)) {
@@ -84,7 +98,7 @@ public final class LoggerInjector {
 
 	}
 
-	public static Class<?> getClassToInject() {
+	private static Class<?> getClassToInject() {
 		final StackTraceElement[] stes = Thread.currentThread().getStackTrace();
 		boolean foundLogClass = false;
 		String className = null;
@@ -110,7 +124,7 @@ public final class LoggerInjector {
 		return null;
 	}
 
-	public static Logger createLogger(Annotation ann, LoggerLevel maxLogLevel,
+	private static Logger createLogger(Annotation ann, LoggerLevel maxLogLevel,
 			Class<?> classToLog, String prefix) {
 		if (ann.annotationType().equals(ConsoleLogger.class)) {
 			ConsoleLogger annInst = (ConsoleLogger) ann;

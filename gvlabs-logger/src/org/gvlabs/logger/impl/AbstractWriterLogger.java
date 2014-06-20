@@ -10,12 +10,29 @@ import java.util.logging.Level;
 import org.gvlabs.logger.Logger;
 import org.gvlabs.logger.LoggerLevel;
 
+/**
+ * Writer Log Base Class
+ * 
+ * @author Thiago Galbiatti Vespa
+ * 
+ */
 public abstract class AbstractWriterLogger extends Logger {
-	
-	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger.getAnonymousLogger();
-	
+
+	private static final java.util.logging.Logger JLOGGER = java.util.logging.Logger
+			.getAnonymousLogger();
+
 	private Writer writer;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param writer
+	 *            writer used to log
+	 * @param maxLogLevel
+	 *            max log level
+	 * @param prefix
+	 *            prefix
+	 */
 	public AbstractWriterLogger(Writer writer, LoggerLevel maxLogLevel,
 			String prefix) {
 		super(maxLogLevel, prefix);
@@ -40,7 +57,7 @@ public abstract class AbstractWriterLogger extends Logger {
 
 			writer.write(cmplSB.toString());
 			writer.write("\n");
-			if(e!=null) {
+			if (e != null) {
 				e.printStackTrace(new PrintWriter(this.writer));
 			}
 			writer.flush();
@@ -55,6 +72,12 @@ public abstract class AbstractWriterLogger extends Logger {
 		}
 	}
 
+	/**
+	 * Close the writer
+	 * 
+	 * @throws IOException
+	 *             ioexception
+	 */
 	public void close() throws IOException {
 		if (writer != null) {
 			writer.close();
